@@ -16,9 +16,7 @@ Configure runtime paths via `.env`.
 
 ## 2) Download Dataset
 
-Download dataset from [Google Drive](https://drive.google.com/file/d/1hX4D91QbXa0UQlgf6Jnf-1ii96gfp1aY/view?usp=sharing) and unzip the file into the `dataset/` directory.
-
-The dataset for the project follows this structure:
+Download the pre-processed multimodal weather dataset from [Google Drive](https://drive.google.com/file/d/1hX4D91QbXa0UQlgf6Jnf-1ii96gfp1aY/view?usp=sharing) and unzip the file into the `dataset/` directory. The dataset for the project follows this structure:
 
 ```text
 dataset/
@@ -34,6 +32,10 @@ dataset/
     train.parquet
     test.parquet
 ```
+
+> The raw weather dataset is available at [Huggingface Dataset](https://huggingface.co/datasets/catherpker/TRACE-TimeseriesRAG-Dataset). Feel free to use this dataset for follow-up research or other tasks.
+
+TimeMMD dataset is available at [TimeMMD Repo](https://github.com/AdityaLab/Time-MMD).
 
 ## 3) Project Organization
 
