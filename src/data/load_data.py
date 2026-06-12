@@ -97,6 +97,10 @@ def generate_er(event):
 
 def load_retrieval_from_parquet(split: str, file_path: str, text_encoder_name: str, device="cuda:0"):
     file_path_pq = os.path.join(file_path+split, f'{split}.parquet')
+    if not os.path.exists(file_path_pq):
+        file_path_pq = os.path.join(file_path, f'{split}.parquet')
+    cache_dir = os.path.dirname(file_path_pq)
+    os.makedirs(cache_dir, exist_ok=True)
     df = pd.read_parquet(file_path_pq)
     timeseries = []
     descriptions = []
@@ -124,7 +128,7 @@ def load_retrieval_from_parquet(split: str, file_path: str, text_encoder_name: s
     
     encoder_short_name = text_encoder_name.split("/")[-1]
     
-    channel_description_emb_path = os.path.join(file_path+split, f'channel_description_emb_{encoder_short_name}.pt')
+    channel_description_emb_path = os.path.join(cache_dir, f'channel_description_emb_{encoder_short_name}.pt')
     if os.path.exists(channel_description_emb_path):
         channel_description_emb = torch.load(channel_description_emb_path,map_location="cpu")
     else:
@@ -139,7 +143,7 @@ def load_retrieval_from_parquet(split: str, file_path: str, text_encoder_name: s
         )
         torch.save(channel_description_emb, channel_description_emb_path)
     
-    description_emb_path = os.path.join(file_path+split, f'description_emb_{encoder_short_name}.pt')
+    description_emb_path = os.path.join(cache_dir, f'description_emb_{encoder_short_name}.pt')
     if os.path.exists(description_emb_path):
         description_emb = torch.load(description_emb_path,map_location="cpu")
     else:
@@ -155,7 +159,7 @@ def load_retrieval_from_parquet(split: str, file_path: str, text_encoder_name: s
         torch.save(description_emb, description_emb_path)
         
     
-    event_emb_path = os.path.join(file_path+split, f'event_emb_{encoder_short_name}.pt')
+    event_emb_path = os.path.join(cache_dir, f'event_emb_{encoder_short_name}.pt')
     if os.path.exists(event_emb_path):
         event_emb = torch.load(event_emb_path,map_location="cpu")
     else:
@@ -176,6 +180,4 @@ def load_retrieval_from_parquet(split: str, file_path: str, text_encoder_name: s
         return timeseries, description_emb, channel_description_emb, event_emb, labels
     else:
         return timeseries, description_emb, channel_description_emb, event_emb, labels, descriptions, channel_descriptions, events
-
-
 
