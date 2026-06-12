@@ -13,6 +13,7 @@ conda activate trace-rag
 ```
 
 Configure runtime paths via `.env`.
+
 **have to reinstall torch if using GPU of 50XX
 
 ## 2) Download Dataset
