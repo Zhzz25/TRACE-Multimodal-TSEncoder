@@ -130,6 +130,11 @@ Refer to  `demo.ipynb` for generating embedding bank and cross-modal retrieval.
 
 ![TimeSeriesRAG Retrieval Demo](misc/retrieval.png)
 
+## Result Reproduction Using Pretrained Model 
+```bash
+python retrieval_eval.py --split test --batch_size 4 --mode table1
+```
+
 ## Citation
 If you find this work useful, please consider citing our paper:
 ```bibtex
