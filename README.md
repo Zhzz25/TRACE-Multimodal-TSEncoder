@@ -132,13 +132,38 @@ Refer to  `demo.ipynb` for generating embedding bank and cross-modal retrieval.
 
 ![TimeSeriesRAG Retrieval Demo](misc/retrieval.png)
 
-## Result Reproduction Using Pretrained Model 
+## Retrieval Evaluation 
 
 Use `retrieval_eval.py` to evaluate the provided retrieval checkpoint and reproduce Table 1 in the paper.
 
 ```bash
 python retrieval_eval.py --split test --batch_size 4 --mode table1
 ```
+
+On GPUs with limited memory, reduce --batch_size.
+
+## Weakly Supervised Segment Retrieval
+
+`weak_segment_train.py` extends TRACE from whole-series retrieval to weakly supervised text-to-time-series segment retrieval. Instead of requiring human-annotated temporal boundaries, it generates rule-based pseudo segment labels from event types and relevant variables. Then it trains a lightweight segment projection head on top of a frozen TRACE encoder.
+
+(Demo version: The TRACE backbone is frozen, and only the segment head is trained.)
+
+### Train on the full weakly labeled training set
+
+```bash
+python weak_segment_train.py \
+  --mode train \
+  --split train \
+  --max_samples 0 \
+  --epochs 8 \
+  --batch_size 2 \
+  --segment_batch_size 8 \
+  --window_size 48 \
+  --stride 12 \
+  --output results/segment_weak_full/segment_head_train_full.pt
+```
+
+Note: The weak segment retrieval experiment uses rule-based pseudo labels generated from event annotations and meteorological variables. It does not require manually annotated temporal segment boundaries, but it still relies on sample-level event annotations. Therefore, it is a weakly supervised extension rather than a fully unsupervised or label-free method.
 
 ## Citation
 If you find this work useful, please consider citing our paper:
