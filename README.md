@@ -45,7 +45,9 @@ TimeMMD dataset is available at [TimeMMD Repo](https://github.com/AdityaLab/Time
 ├── pretrain.py                  # Stage 1
 ├── context_align.py             # Stage 2
 ├── forecast_finetune.py         # Optional for task-specific finetuning
-├── demo.ipynb                   # Embedding + retrieval demo
+├── demo.ipynb
+├── retrieval_eval.py             # Retrieval evaluation (Table 1)
+├── weak_segment_train.py         # Weakly supervised text-to-segment retrieval
 ├── configs/
 │   ├── pretrain.yaml
 │   ├── align.yaml
@@ -131,6 +133,9 @@ Refer to  `demo.ipynb` for generating embedding bank and cross-modal retrieval.
 ![TimeSeriesRAG Retrieval Demo](misc/retrieval.png)
 
 ## Result Reproduction Using Pretrained Model 
+
+Use `retrieval_eval.py` to evaluate the provided retrieval checkpoint and reproduce Table 1 in the paper.
+
 ```bash
 python retrieval_eval.py --split test --batch_size 4 --mode table1
 ```
