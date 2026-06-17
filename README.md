@@ -2,7 +2,7 @@
 (NeurIPS'25) TRACE: Grounding Time Series in Context for Multimodal Embedding and Retrieval
 </b></h1>
 
-**This repository is forked from the TRACE project and adds reproduction scripts, retrieval evaluation utilities, and a weakly supervised time-series segment retrieval extension.
+**This repository is forked from the TRACE project and adds reproduction scripts, retrieval evaluation utilities, and a weakly supervised time-series segment retrieval extension.**
 
 **This repository provides installation and usage scripts for TRACE <a href="https://arxiv.org/abs/2506.09114" target="_blank">(arXiv:2506.09114)</a>.**
 
