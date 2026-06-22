@@ -48,8 +48,8 @@ TimeMMD dataset is available at [TimeMMD Repo](https://github.com/AdityaLab/Time
 ├── context_align.py             # Stage 2
 ├── forecast_finetune.py         # Optional for task-specific finetuning
 ├── demo.ipynb
-├── retrieval_eval.py             # Retrieval evaluation (Table 1)
-├── weak_segment_train.py         # Weakly supervised text-to-segment retrieval
+├── retrieval_eval.py            # Retrieval evaluation (Table 1)
+├── weak_segment_train.py        # Weakly supervised text-to-segment retrieval
 ├── configs/
 │   ├── pretrain.yaml
 │   ├── align.yaml
